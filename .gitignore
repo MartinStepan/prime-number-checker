@@ -1,6 +1,7 @@
-.idea
-.logs
-.target
+.idea/
+logs/
+target/
+
 *.iml
 
 # Package Files #
