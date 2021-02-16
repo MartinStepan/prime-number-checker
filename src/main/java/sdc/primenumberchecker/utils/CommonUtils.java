@@ -5,7 +5,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class CommonUtils {
 
-    /** (a ^ b) % c **/
+    /** Helpful function
+     *
+     * @param a
+     * @param b
+     * @param c
+     * @return (a^b) % c
+     */
+
     public long modPow(long a, long b, long c) {
         long result = 1;
         for (int i = 0; i < b; i++) {

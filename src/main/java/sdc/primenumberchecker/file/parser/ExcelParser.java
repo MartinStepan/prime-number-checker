@@ -27,7 +27,7 @@ public class ExcelParser implements FileParser {
     private MillerRabinPrimeTest primeTest;
 
     @Override
-    public void readFile(String filename) {
+    public void processFile(String filename) {
         Workbook workbook = null;
         try {
             workbook = new XSSFWorkbook(filename);

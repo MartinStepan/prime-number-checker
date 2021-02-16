@@ -36,7 +36,7 @@ public class MillerRabinPrimeTest {
             s++;
         }
 
-        log.debug("2^s * d = n-1: s = {}, d = {}", s, d);
+        log.trace("2^s * d = n-1: s = {}, d = {}", s, d);
 
         for(int i = 0; i < cycleCount ;i++) {
             if(!isPropablyPrime(number, s, d)) {
@@ -53,7 +53,7 @@ public class MillerRabinPrimeTest {
 
         long x = utils.modPow(a, d, number);
 
-        log.debug("x = a^d % n: a = {}, x = {}", a, x);
+        log.trace("x = a^d % n: a = {}, x = {}", a, x);
 
         //not composite
         if((x == 1) || (x == number-1)) {

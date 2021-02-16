@@ -2,5 +2,9 @@ package sdc.primenumberchecker.file.parser;
 
 public interface FileParser {
 
-    void readFile(String filename);
+    /** This method process entered file - load numbers from file and check, if they are prime numbers
+     *
+     * @param filename
+     */
+    void processFile(String filename);
 }
