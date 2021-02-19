@@ -32,11 +32,11 @@ public class ExcelParser implements FileParser {
         try {
             workbook = new XSSFWorkbook(filename);
         } catch (IOException e) {
-            log.error("Error while reading {} file: {}", filename, e.toString());
+            log.error("Error while reading file {}: {}", filename, e.toString());
         }
 
         if(workbook.getNumberOfSheets() < 1) {
-            log.error("No sheets found inf file {}", filename);
+            log.error("No sheets found in file {}", filename);
             return;
         }
 

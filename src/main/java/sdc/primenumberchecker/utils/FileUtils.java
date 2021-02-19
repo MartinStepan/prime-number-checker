@@ -16,10 +16,10 @@ public class FileUtils {
     @Value("#{'${file.extension.support}'.split(',')}")
     List<String> fileExtension;
 
-    /** Check is entered file with correct extension
+    /** Check if is entered file with correct extension
      *
      * @param filename
-     * @throws ExtensionException if no extension or not supported extension
+     * @throws ExtensionException if no extension defined or not supported extension
      */
     public void checkFileExtension(String filename) throws ExtensionException {
         if(!filename.contains(".")) {
