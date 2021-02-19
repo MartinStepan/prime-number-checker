@@ -51,8 +51,13 @@ public class ExcelParser implements FileParser {
                     if(cell != null) {
                         if(StringUtils.isNumeric(cell.getStringCellValue())) {
                             long value = Long.valueOf(cell.getStringCellValue());
-                            boolean result = primeTest.isNumberPrime(value, cycleCount);
-                            log.info("Number {} is {}", value, result?"probably prime "+"(probability "+(100-(1/(Math.pow(4, cycleCount))*100))+"%)":"not prime");
+                            if(value < 0) {
+                                log.debug("Value {} is not valid - ignoring", value);
+                            }
+                            else {
+                                boolean result = primeTest.isNumberPrime(value, cycleCount);
+                                log.info("Number {} is {}", value, result ? "probably prime " + "(probability " + (100 - (1 / (Math.pow(4, cycleCount)) * 100)) + "%)" : "not prime");
+                            }
                         }
                     }
                 }

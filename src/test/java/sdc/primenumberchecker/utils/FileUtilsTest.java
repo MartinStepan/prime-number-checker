@@ -24,6 +24,26 @@ public class FileUtilsTest {
     }
 
     @Test
+    public void checkFileWithNoExtension3() {
+        Assertions.assertThrows(ExtensionException.class, () -> fileUtils.checkFileExtension("../file"));
+    }
+
+    @Test
+    public void checkFileWithNoExtension4() {
+        Assertions.assertThrows(ExtensionException.class, () -> fileUtils.checkFileExtension("..\\file"));
+    }
+
+    @Test
+    public void checkFileWithNoExtension5() {
+        Assertions.assertThrows(ExtensionException.class, () -> fileUtils.checkFileExtension("../file."));
+    }
+
+    @Test
+    public void checkFileWithNoExtension6() {
+        Assertions.assertThrows(ExtensionException.class, () -> fileUtils.checkFileExtension("..\\file."));
+    }
+
+    @Test
     public void checkFileWithUnsupportedExtension() {
         Assertions.assertThrows(ExtensionException.class, () -> fileUtils.checkFileExtension("file.x"));
     }

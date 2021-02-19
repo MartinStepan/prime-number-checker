@@ -22,17 +22,47 @@ public class FileUtils {
      * @throws ExtensionException if no extension defined or not supported extension
      */
     public void checkFileExtension(String filename) throws ExtensionException {
-        if(!filename.contains(".")) {
+        String fName;
+
+        //handle relative path
+        fName = handleRelativePath(filename, "/", "\\");
+        if(fName.equals(filename)) {
+            fName = handleRelativePath(filename, "\\", "/");
+        }
+
+        System.out.println("fName: "+fName);
+
+        if(!fName.contains(".")) {
             throw new ExtensionException("You must specify file with extension! Entered filename: " + filename);
         }
 
-        String extension = StringUtils.substring(filename, filename.lastIndexOf(".")+1);
+        String extension = StringUtils.substring(fName, fName.lastIndexOf(".")+1);
         if(extension == null || extension.isEmpty()) {
             throw new ExtensionException("No file extension specified! Entered filename: " + filename);
         }
 
         if(!fileExtension.contains(extension)) {
             throw new ExtensionException("File extension "+extension+" is not supported");
+        }
+    }
+
+    private String handleRelativePath(String filename, String firstCheck, String secondCheck) {
+        String fNameFirstCheck;
+        String fNameSecondCheck;
+        if(StringUtils.contains(filename, firstCheck)) {
+            fNameFirstCheck = StringUtils.substring(filename, filename.lastIndexOf(firstCheck) + 1, filename.length());
+            if (fNameFirstCheck != null && !fNameFirstCheck.isEmpty()) {
+                if (StringUtils.contains(fNameFirstCheck, secondCheck)) {
+                    fNameSecondCheck = StringUtils.substring(fNameFirstCheck, fNameFirstCheck.lastIndexOf(secondCheck) + 1, fNameFirstCheck.length());
+                    return fNameSecondCheck;
+                } else {
+                    return fNameFirstCheck;
+                }
+            } else {
+                return fNameFirstCheck;
+            }
+        } else {
+            return filename;
         }
     }
 
