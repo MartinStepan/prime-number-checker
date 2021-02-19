@@ -30,8 +30,6 @@ public class FileUtils {
             fName = handleRelativePath(filename, "\\", "/");
         }
 
-        System.out.println("fName: "+fName);
-
         if(!fName.contains(".")) {
             throw new ExtensionException("You must specify file with extension! Entered filename: " + filename);
         }
